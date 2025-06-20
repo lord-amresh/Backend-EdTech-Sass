@@ -1,13 +1,20 @@
 
-import {Table,Column,Model,DataType} from "sequelize-typescript"
+import {Table,Column,Model,DataType, PrimaryKey} from "sequelize-typescript"
 
 @Table({
-    tableName : 'users', //
-    modelName : 'user',
+    tableName : 'users', // uta gui ma dekhine name vayo(phpmyadmin ma )
+    modelName : 'user', // project bhita mathi ko table lai acess garne name
     timestamps : true
 })
 
 class User extends Model{
+    @Column({
+        primaryKey : true,
+        type : DataType.UUID,
+        defaultValue : DataType.UUIDV4
+    })
+    declare id : string
+
     @Column({
         type : DataType.STRING
     })
